@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <title>HighChart</title>
+</head>
+<body>
+    <div id="container" style="height: 400px"></div>
+    <script>
+        Highcharts.chart('container',{
+            
+            title:{
+                text: 'Chart reflow is set to true'
+            },
+            
+            subtitle:{
+                text: 'When resizing the window or the frame, the chart should resize'
+            },
+            
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'May', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            
+            series: [{
+                data: [29.9, 71.5, 106.4, 122, 133, 333, 0, 12, 400, 300]
+            }]
+        })
+    </script>
+</body>
+</html>
