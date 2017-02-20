@@ -4,7 +4,7 @@ $(document).ready(function(){
     var clock = new com.o2GEEK.Clock('#clock',-0, 'UTC');
     var clock2 = new com.o2GEEK.TextClock('#clock2',-0, 'UTC');
 
-    //var clock2 = new creatClock('#clock2',+300,' UTCC');
+//var clock2 = new creatClock('#clock2',+300,' UTCC');
     
 //    var d = new Date();
 //    //console.log(d.getTimezoneOffset()*60*1000);
@@ -109,11 +109,11 @@ com.o2GEEK.Clock = function(id, offset, label){
     },1000);    
     this.updateClock();
     LiveDate.call(clock,1,2,3);
-    //LiveDate.apply(clock,clock, [1,2,3]);
+    //LiveDate.apply(clock, [1,2,3]);
 }
 
 function LiveDate(a,b,c){
-    //console.log(this,this,a,b,c);
+    //console.log(this,a,b,c);
 }
 
 Date.__interval = 0;
@@ -144,7 +144,11 @@ com.o2GEEK.Clock.prototype.Version = '1';
 com.o2GEEK.Clock.prototype.updateClock = function(){
     var date = this.d;
     var clock = $(this.id);
-    clock.text(this.formatDigits(date.getHours()) +":"+ this.formatDigits(date.getMinutes()) +":"+ this.formatDigits(date.getSeconds()) + " " + this.label +" "+ this.a);
+    clock.text(this.formatOutput(date.getHours(), date.getMinutes(), date.getSeconds(), this.label));
+}
+
+com.o2GEEK.Clock.prototype.formatOutput = function(h, m, s, label){
+    return (this.formatDigits(h) +":"+ this.formatDigits(m) +":"+ this.formatDigits(s) + " " + label);
 }
 
 com.o2GEEK.Clock.prototype.formatDigits = function(val){
@@ -159,16 +163,16 @@ com.o2GEEK.TextClock = function(id, offset, label){
 }
 
 com.o2GEEK.TextClock.prototype = createObject(com.o2GEEK.Clock.prototype, com.o2GEEK.TextClock);
-//com.o2GEEK.TextClock.prototype.constructor = com.o2GEEK.TextClock;
+
+com.o2GEEK.TextClock.prototype.formatOutput = function(h, m, s, label){
+    return (this.formatDigits(h) +" - "+ this.formatDigits(m) +" - "+ this.formatDigits(s) + " - " + label);
+}
 
 //create function by polyfill
 function createObject(proto, cons){
     function c(){};
-    console.log(cons);
-    console.log(cons);
     c.prototype = proto;
     c.prototype.constructor = cons;
-    console.log(new c());
     return new c();
 }
 
