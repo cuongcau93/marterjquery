@@ -3,6 +3,8 @@ $(document).ready(function(){
 //    updateClock();
     var clock = new com.o2GEEK.Clock('#clock',-0, 'UTC');
     var clock2 = new com.o2GEEK.TextClock('#clock2',-0, 'UTC');
+    var clock3 = new com.o2GEEK.AlarmClock('#clock3',-0, 'X', 11, 24 );
+
 
 //var clock2 = new creatClock('#clock2',+300,' UTCC');
     
@@ -176,6 +178,27 @@ function createObject(proto, cons){
     return new c();
 }
 
+//creating an alarm clock
+com.o2GEEK.AlarmClock = function(id, offset, label, almH, almM){
+    com.o2GEEK.TextClock.apply(this, arguments);
+    this.almH = almH;
+    this.almM = almM;
+}
+
+com.o2GEEK.AlarmClock.prototype = createObject(com.o2GEEK.TextClock.prototype, com.o2GEEK.AlarmClock);
+
+com.o2GEEK.AlarmClock.prototype.formatOutput = function(h, m, s, label){
+    var outputDate;
+    console.log(h);
+    console.log(this.almH);
+    if(h == this.almH && m == this.almM){
+        outputDate = "teng teng";
+    }
+    else{
+        outputDate = this.formatDigits(h) +" - "+ this.formatDigits(m) +" - "+ this.formatDigits(s) + " - " + label;
+    }
+    return outputDate;
+}
 
 
 
