@@ -4,7 +4,7 @@ $(document).ready(function(){
     var clock = new com.o2GEEK.AlarmClock('#clock');
     var clock2 = new com.o2GEEK.TextClock('#clock2',-0, 'UTC');
     var clock3 = new com.o2GEEK.Clock('#clock3',-0, 'X');
-
+    var a = new arr();
 
 //var clock2 = new creatClock('#clock2',+300,' UTCC');
     
@@ -189,7 +189,6 @@ com.o2GEEK.AlarmClock = function(id, offset, label, almH, almM){
 }
 
 com.o2GEEK.AlarmClock.prototype = createObject(com.o2GEEK.Clock.prototype, com.o2GEEK.AlarmClock);
-
 com.o2GEEK.AlarmClock.prototype.formatOutput = function(h, m, s, label){
     var outputDate;
     if(h == this.almH && m == this.almM){
@@ -201,7 +200,23 @@ com.o2GEEK.AlarmClock.prototype.formatOutput = function(h, m, s, label){
     return outputDate;
 }
 
-
+var arr = function(){
+    var friends = new Array();
+    friends = ['cuong','hung'];
+    var newFriends = 'trieu';
+    //Array.prototype.push()
+    friends.push(newFriends);
+    console.log(friends);
+    //Array.prototype.pop()
+    friends.pop();
+    console.log(friends);
+    //Array.prototype.indexOf()
+    //tra ve vi tri dau tien ma no duoc tim thay
+    //tra ve tru -1 neu ko tim thay
+    var x = friends.indexOf('cuong');
+    console.log(x);
+    
+}
 
 
 
