@@ -216,6 +216,13 @@ var arr = function(){
     var x = friends.indexOf('cuong');
     console.log(x);
     
+    //Array map()
+    var friendsObj = friends.map(function(name){
+        return{
+            name : name
+        }
+    })
+    console.log(friendsObj);
 }
 
 
