@@ -2,8 +2,7 @@ $(document).ready(function(){
     //PRIVATE variable
     var a = new Restaurant();
     a.use_restroom();
-    
-    
+    myMain();
 })
 
 //PRIVATE variable
@@ -15,11 +14,21 @@ function Restaurant(){
         console.log(myPrivateVar);
     } 
     
+    //function private
     this.use_restroom = function(){ // use_restroom is visible to all
         private_stuff();
     }
     
     this.buy_food = function(){ // buy_food is visible to all
         private_stuff();
+    }
+}
+
+function myMain(){
+    console.log("main");
+    myHelper();
+    // myHelper is function private
+    function myHelper(){
+        console.log("Utility");
     }
 }
