@@ -6,19 +6,13 @@ $(document).ready(function(){
 })
 
 var Book = function(isbn, title, author){
-    if(!this.checkIsbn(isbn))
-        try{
-            throw new Error('Book: invalid ISBN.');
-        }catch(err)
-            {
-                alert(err);
-            }
     this.isbn = isbn;
     this.title = title || 'No title specified';
     this.author = author || 'No author specified';
 }
 
 Book.prototype = {
+    
     checkIsbn: function(isbn){
         if(isbn == undefined || typeof isbn != 'string'){
             return false;
@@ -65,6 +59,31 @@ Book.prototype = {
         }
         
         return true; // All test passed;
+    },
+    
+    getIsbn: function(){
+        return this.isbn;
+    },
+    
+    setIsbn: function(){
+        if(!this.checkIsbn(isbn)) Error('Book: Invalid ISBN');
+        this.isbn = isbn;
+    },
+    
+    getTitle: function(){
+        return this.title();
+    },
+    
+    setTitle: function(){
+        this.title = title || 'No title specified';
+    },
+    
+    getAuthor: function(){
+        return this.author;
+    },
+
+    setAuthor: function(){
+        this.author = author || 'No author specified';
     },
     
     display: function(){
